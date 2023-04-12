@@ -45,7 +45,7 @@ export {
 
 export {
   useFetchProductsQuery,
-  useAddProductsMutation,
-  useUpdateProductsMutation,
-  useRemoveProductsMutation,
+  useAddProductMutation,
+  useUpdateProductMutation,
+  useRemoveProductMutation,
 } from './apis/productsApi';

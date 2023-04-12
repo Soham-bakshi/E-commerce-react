@@ -15,32 +15,33 @@ export const productsApi = createApi({
           };
         },
       }),
-      addProducts: builder.mutation({
-        query: () => {
+      addProduct: builder.mutation({
+        query: (data) => {
           return {
             url: '/products',
             method: 'POST',
             body: {
-              //
+              ...data,
             },
           };
         },
       }),
-      updateProducts: builder.mutation({
-        query: (product) => {
+      updateProduct: builder.mutation({
+        query: (data) => {
+          console.log(data);
           return {
-            url: `/products/?id=${product.id}`,
+            url: `/products/${data.id}`,
             method: 'PUT',
             body: {
-              //
+              ...data,
             },
           };
         },
       }),
-      removeProducts: builder.mutation({
+      removeProduct: builder.mutation({
         query: (id) => {
           return {
-            url: `/products/?id=${id}`,
+            url: `/products/${id}`,
             method: 'DELETE',
           };
         },
@@ -51,7 +52,7 @@ export const productsApi = createApi({
 
 export const {
   useFetchProductsQuery,
-  useAddProductsMutation,
-  useUpdateProductsMutation,
-  useRemoveProductsMutation,
+  useAddProductMutation,
+  useUpdateProductMutation,
+  useRemoveProductMutation,
 } = productsApi;

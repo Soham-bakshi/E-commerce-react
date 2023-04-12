@@ -1,4 +1,10 @@
+import ButtonAppBar from './ButtonAppBar';
+
 function Navbar() {
-  return <div>Navbar</div>;
+  return (
+    <>
+      <ButtonAppBar />
+    </>
+  );
 }
 export default Navbar;
