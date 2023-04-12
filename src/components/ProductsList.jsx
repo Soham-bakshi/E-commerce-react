@@ -1,9 +1,17 @@
 import { useFetchProductsQuery } from '../store';
 import Sort from './Sort';
 import ProductItem from './ProductItem';
+import { useDispatch } from 'react-redux';
+import { addProducts } from '../store';
+import { useEffect } from 'react';
 
 function ProductsList() {
   const { data, error, isLoading, isSuccess } = useFetchProductsQuery();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(addProducts(data));
+  }, [data]);
 
   if (isLoading) {
     return (
@@ -21,10 +29,6 @@ function ProductsList() {
 
   if (error) {
     return <div>Error fetching data...</div>;
-  }
-
-  if (isSuccess) {
-    console.log(data);
   }
 
   return (

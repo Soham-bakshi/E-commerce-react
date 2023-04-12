@@ -8,6 +8,7 @@ export const productsApi = createApi({
   endpoints(builder) {
     return {
       fetchProducts: builder.query({
+        providesTags: ['product'],
         query: () => {
           return {
             url: '/products',
@@ -15,7 +16,9 @@ export const productsApi = createApi({
           };
         },
       }),
+
       addProduct: builder.mutation({
+        invalidatesTags: ['product'],
         query: (data) => {
           return {
             url: '/products',
@@ -26,9 +29,10 @@ export const productsApi = createApi({
           };
         },
       }),
+
       updateProduct: builder.mutation({
+        invalidatesTags: ['product'],
         query: (data) => {
-          console.log(data);
           return {
             url: `/products/${data.id}`,
             method: 'PUT',
@@ -38,7 +42,9 @@ export const productsApi = createApi({
           };
         },
       }),
+
       removeProduct: builder.mutation({
+        invalidatesTags: ['product'],
         query: (id) => {
           return {
             url: `/products/${id}`,

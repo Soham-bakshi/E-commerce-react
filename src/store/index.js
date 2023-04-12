@@ -1,12 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import {
-  addProduct,
-  editProduct,
-  removeProduct,
-  productView,
-  productReducer,
-  productSlice,
+  addProducts,
+  productsReducer,
+  productsSlice,
 } from './slice/productSlice';
 import {
   addCart,
@@ -20,7 +17,7 @@ import { productsApi } from './apis/productsApi';
 
 const store = configureStore({
   reducer: {
-    [productSlice.name]: productReducer,
+    [productsSlice.name]: productsReducer,
     [cartSlice.name]: cartReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
@@ -31,17 +28,7 @@ const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export {
-  store,
-  addProduct,
-  editProduct,
-  removeProduct,
-  productView,
-  addCart,
-  cartItems,
-  updateCart,
-  deleteCart,
-};
+export { store, addProducts, addCart, cartItems, updateCart, deleteCart };
 
 export {
   useFetchProductsQuery,

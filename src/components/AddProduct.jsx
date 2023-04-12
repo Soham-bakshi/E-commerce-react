@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { nanoid } from '@reduxjs/toolkit';
+import { useNavigate } from 'react-router-dom';
 import { useAddProductMutation } from '../store';
 
 function AddProduct() {
   const [data, setData] = useState({
-    id: nanoid(),
+    id: Date.now(),
     title: '',
     price: 0,
     rating: 0,
@@ -14,6 +14,7 @@ function AddProduct() {
   });
 
   const [addProduct] = useAddProductMutation();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     if (e.target.name === 'title') {
@@ -40,6 +41,7 @@ function AddProduct() {
     e.preventDefault();
 
     addProduct(data);
+    navigate('/');
   };
 
   return (

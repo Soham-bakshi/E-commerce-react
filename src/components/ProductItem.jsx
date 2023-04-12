@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import BasicRating from './BasicRating';
+import { useNavigate } from 'react-router-dom';
+
 import { useRemoveProductMutation, useUpdateProductMutation } from '../store';
 
 function ProductItem({ item }) {
+  const [removeProduct] = useRemoveProductMutation();
+  const [updateProduct] = useUpdateProductMutation();
+  const navigate = useNavigate();
   const [data, setData] = useState({
     ...item,
   });
-
-  const [isedit, setIsEdit] = useState(false);
-
-  const [removeProduct] = useRemoveProductMutation();
-  const [updateProduct] = useUpdateProductMutation();
+  const [isEdit, setIsEdit] = useState(false);
 
   const handleChange = (e) => {
     if (e.target.name === 'title') {
@@ -31,18 +32,30 @@ function ProductItem({ item }) {
     e.preventDefault();
 
     updateProduct(data);
-    setIsEdit(!isedit);
+    setIsEdit(!isEdit);
+  };
+
+  const handleClick = (id) => {
+    navigate(`productdetail/${id}`);
   };
 
   return (
     <div>
-      {!isedit ? (
+      {!isEdit ? (
         <div>
+          <img
+            style={{ width: '250px' }}
+            src={item.thumbnail}
+            alt={item.title}
+          />
           <p>{item.title}</p>
           <p>{item.price}</p>
           <p>{item.rating}</p>
           <p>{item.description}</p>
-          <button type="button" onClick={() => setIsEdit(!isedit)}>
+          <button type="button" onClick={() => handleClick(item.id)}>
+            details
+          </button>
+          <button type="button" onClick={() => setIsEdit(!isEdit)}>
             edit
           </button>
           <button type="button" onClick={() => removeProduct(item.id)}>
@@ -50,44 +63,52 @@ function ProductItem({ item }) {
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="title"
-            placeholder="title"
-            value={data.title}
-            onChange={handleChange}
-          ></input>
-          <input
-            type="number"
-            name="price"
-            placeholder="price"
-            value={data.price}
-            onChange={handleChange}
-          ></input>
-          <input
-            type="number"
-            name="rating"
-            placeholder="rating"
-            value={data.rating}
-            onChange={handleChange}
-          ></input>
-          <input
-            type="text"
-            name="description"
-            placeholder="description"
-            value={data.description}
-            onChange={handleChange}
-          ></input>
-          <button type="submit">save</button>
-          <button type="button" onClick={() => setIsEdit(!isedit)}>
-            cancel
-          </button>
-        </form>
+        <div>
+          <img
+            style={{ width: '250px' }}
+            src={item.thumbnail}
+            alt={item.title}
+          />
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="title"
+              placeholder="title"
+              value={data.title}
+              onChange={handleChange}
+            ></input>
+            <input
+              type="number"
+              name="price"
+              placeholder="price"
+              value={data.price}
+              onChange={handleChange}
+            ></input>
+            <input
+              type="number"
+              name="rating"
+              placeholder="rating"
+              value={data.rating}
+              onChange={handleChange}
+            ></input>
+            <input
+              type="text"
+              name="description"
+              placeholder="description"
+              value={data.description}
+              onChange={handleChange}
+            ></input>
+            <button type="submit">save</button>
+            <button type="button" onClick={() => setIsEdit(!isEdit)}>
+              cancel
+            </button>
+          </form>
+        </div>
       )}
 
       <hr />
     </div>
   );
 }
+
 export default ProductItem;
