@@ -6,10 +6,10 @@ import {
   productsSlice,
 } from './slice/productSlice';
 import {
-  addCart,
-  cartItems,
-  updateCart,
-  deleteCart,
+  addToCart,
+  decreaseItems,
+  increaseItems,
+  clearCart,
   cartReducer,
   cartSlice,
 } from './slice/cartSlice';
@@ -28,7 +28,14 @@ const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export { store, addProducts, addCart, cartItems, updateCart, deleteCart };
+export {
+  store,
+  addProducts,
+  addToCart,
+  increaseItems,
+  decreaseItems,
+  clearCart,
+};
 
 export {
   useFetchProductsQuery,
