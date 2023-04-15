@@ -7,7 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import { MdOutlineDeleteForever } from 'react-icons/md';
 import { BsFillCartCheckFill } from 'react-icons/bs';
 import { FaShoppingBag } from 'react-icons/fa';
-import { useRemoveProductMutation, useUpdateProductMutation } from '../store';
+import {
+  addToCart,
+  useRemoveProductMutation,
+  useUpdateProductMutation,
+} from '../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -58,6 +62,17 @@ function ProductItem({ item }) {
     navigate(`productdetail/${id}`);
   };
 
+  const handleAddToCart = () => {
+    const cartItem = {
+      title: item.title,
+      id: item.id,
+      thumbnail: item.thumbnail,
+      qty: 1,
+      price: item.price,
+    };
+    dispatch(addToCart(cartItem));
+  };
+
   return (
     <Wrapper>
       {!isEdit ? (
@@ -72,14 +87,21 @@ function ProductItem({ item }) {
           <div className="info">
             <h3>Name : {item.title}</h3>
             <h4>Price : {item.price}</h4>
-            <h4>Rating : {item.rating}</h4>
+            <h4 style={{ display: 'flex' }}>
+              Rating :{' '}
+              <span style={{ margin: '0.05rem 0.5rem' }}>
+                <Stars stars={item.rating} />
+              </span>
+            </h4>
+
             <h5>Description : {item.description}</h5>
             <div className="btn-container">
-              <Link to="/cart">
-                <button className="btn btn-icon btn-margin" type="button">
-                  <FaShoppingBag />
-                </button>
-              </Link>
+              <button
+                className="btn btn-icon btn-margin"
+                onClick={handleAddToCart}
+              >
+                <BsFillCartCheckFill />
+              </button>
               <button
                 className="btn btn-icon btn-margin"
                 type="button"
@@ -295,6 +317,9 @@ const Wrapper = styled.div`
     .form-content textarea {
       font-size: 16px;
     }
+    /* h4 span {
+      display: block;
+    } */
   }
 `;
 
