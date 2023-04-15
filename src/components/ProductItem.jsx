@@ -9,34 +9,28 @@ import { BsFillCartCheckFill } from 'react-icons/bs';
 import { FaShoppingBag } from 'react-icons/fa';
 import { useRemoveProductMutation, useUpdateProductMutation } from '../store';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../store';
 import { Link } from 'react-router-dom';
 
 function ProductItem({ item }) {
-  const { id, title, price } = item;
-  const [removeProduct] = useRemoveProductMutation();
-  const [updateProduct] = useUpdateProductMutation();
-
-  const navigate = useNavigate();
-
+  // local states
   const [data, setData] = useState({
     ...item,
   });
   const [isEdit, setIsEdit] = useState(false);
 
-  const dispatch = useDispatch();
+  // RTQ hooks
+  const [removeProduct] = useRemoveProductMutation();
+  const [updateProduct] = useUpdateProductMutation();
 
-  const { cart, itemsAdded } = useSelector((state) => {
+  // accessing the store
+  const { cart } = useSelector((state) => {
     return {
       cart: state.cart_data.cart,
-      itemsAdded: state.cart_data.itemsAdded,
     };
   });
 
-  // console.log(cart, itemsAdded);
-
-  const itemAdded = itemsAdded.includes(id);
-  // console.log(itemAdded);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     if (e.target.name === 'title') {
@@ -64,12 +58,6 @@ function ProductItem({ item }) {
     navigate(`productdetail/${id}`);
   };
 
-  const handleAddToCart = () => {
-    console.log('proitem');
-    const tempItem = { id, title, price, amount: 1 };
-    dispatch(addToCart(tempItem));
-  };
-
   return (
     <Wrapper>
       {!isEdit ? (
@@ -87,22 +75,11 @@ function ProductItem({ item }) {
             <h4>Rating : {item.rating}</h4>
             <h5>Description : {item.description}</h5>
             <div className="btn-container">
-              {!itemAdded ? (
-                <button
-                  className="btn btn-icon btn-margin"
-                  type="button"
-                  onClick={handleAddToCart}
-                >
-                  <BsFillCartCheckFill />
+              <Link to="/cart">
+                <button className="btn btn-icon btn-margin" type="button">
+                  <FaShoppingBag />
                 </button>
-              ) : (
-                <Link to="/cart">
-                  <button className="btn btn-icon btn-margin" type="button">
-                    <FaShoppingBag />
-                  </button>
-                </Link>
-              )}
-
+              </Link>
               <button
                 className="btn btn-icon btn-margin"
                 type="button"

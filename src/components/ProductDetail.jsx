@@ -7,9 +7,9 @@ import AmountButtons from './AmountButtons';
 import { useState } from 'react';
 
 function ProductDetail() {
-  const [amount, setAmount] = useState(1);
+  const [count, setCount] = useState(1);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { data } = useSelector((state) => {
     return {
       data: state.product_data,
@@ -33,28 +33,39 @@ function ProductDetail() {
     stock,
   } = productDetail[0];
 
-  const increase = () => {
-    setAmount((oldAmount) => {
-      let tempAmount = oldAmount + 1;
-      if (tempAmount > stock) {
-        tempAmount = stock;
+  const increment = () => {
+    setCount((oldCount) => {
+      let tempCount = oldCount + 1;
+      if (tempCount > stock) {
+        tempCount = stock;
       }
-      return tempAmount;
+      return tempCount;
     });
   };
 
-  const decrease = () => {
-    setAmount((oldAmount) => {
-      let tempAmount = oldAmount - 1;
-      if (tempAmount < 1) {
-        tempAmount = 1;
+  const decrement = () => {
+    setCount((oldCount) => {
+      let tempCount = oldCount - 1;
+      if (tempCount < 1) {
+        tempCount = 1;
       }
-      return tempAmount;
+      return tempCount;
     });
+  };
+
+  const handleAddToCart = () => {
+    const item = {
+      title: title,
+      id: id,
+      thumbnail: thumbnail,
+      qty: count,
+      price: price,
+    };
+    dispatch(addToCart(item));
   };
 
   return (
-    <Wrapper>
+    <Wrapper className="page">
       <div className="container">
         <div className="info">
           <div className="image">
@@ -70,19 +81,15 @@ function ProductDetail() {
             Quantity :{' '}
             <span>
               <AmountButtons
-                amount={amount}
-                increase={increase}
-                decrease={decrease}
+                count={count}
+                increment={increment}
+                decrement={decrement}
               />
             </span>
           </h4>
         </div>
         <div className="btn-container">
-          <Link
-            to="/cart"
-            className="btn"
-            // onClick={() => dispatch(addCart(productDetail[0]))}
-          >
+          <Link to="/cart" className="btn" onClick={handleAddToCart}>
             Add to cart
           </Link>
           <Link to="/" className="btn">
@@ -95,10 +102,8 @@ function ProductDetail() {
 }
 
 const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
+  display: block;
+  margin-top: 3rem;
   .container {
     max-width: 800px;
     margin: 0 auto;

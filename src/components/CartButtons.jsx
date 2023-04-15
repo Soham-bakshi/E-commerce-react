@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 const CartButtons = () => {
   const quantity = useSelector((state) => {
-    return state.cart_data.quantity;
+    return state.cart_data.totalItems;
   });
 
   return (

@@ -3,37 +3,68 @@ import { createSlice } from '@reduxjs/toolkit';
 export const cartSlice = createSlice({
   name: 'cart_data',
   initialState: {
-    cart: [],
-    itemsAdded: [],
-    quantity: 0,
+    cartItems: [],
+    subtotal: 0,
+    totalItems: 0,
+    shippingFee: 100,
   },
   reducers: {
-    addToCart(state, action) {
-      const tempCart = [...state.cart, action.payload];
-      const tempItemsAdded = [...state.itemsAdded, action.payload.id];
-      const tempQuantity = tempCart.reduce((acc, curr) => {
-        return acc + curr.amount;
-      }, 0);
-      return {
-        ...state,
-        cart: tempCart,
-        itemsAdded: tempItemsAdded,
-        quantity: tempQuantity,
-      };
+    addToCart: (state, { payload }) => {
+      let tempCart = [...state.cartItems];
+      let totalItems = state.totalItems + payload.qty;
+      const subtotal = state.subtotal + payload.price * payload.qty;
+      let commonItems = tempCart.filter((item) => item.id === payload.id);
+      if (!commonItems.length) {
+        tempCart.push(payload);
+      } else {
+        tempCart.forEach((item, index, array) => {
+          if (item.id === payload.id) {
+            array[index].qty += payload.qty;
+          }
+        });
+      }
+      state.cartItems = tempCart;
+      state.subtotal = subtotal;
+      state.totalItems = totalItems;
     },
-    increaseItems(state, action) {
-      //
+    removeFromCart: (state, { payload }) => {
+      const id = payload.id;
+      let tempCart = [...state.cartItems];
+      tempCart = tempCart.filter((item) => item.id !== id);
+      let totalItems = state.totalItems - payload.qty;
+      const subtotal = state.subtotal - payload.price * payload.qty;
+      state.cartItems = tempCart;
+      state.subtotal = subtotal;
+      state.totalItems = totalItems;
     },
-    decreaseItems(state, action) {
-      //
+    clearCart: (state) => {
+      state.cartItems = [];
+      state.subtotal = 0;
+      state.totalItems = 0;
     },
-    clearCart(state, action) {
-      //
+    increment: (state, { payload }) => {
+      const index = payload.index;
+      let tempCart = [...state.cartItems];
+      tempCart[index].qty += 1;
+      state.cartItems = tempCart;
+      state.subtotal += tempCart[index].price;
+      state.totalItems += 1;
+    },
+    decrement: (state, { payload }) => {
+      const item = payload.item;
+      const index = payload.index;
+      if (item.qty >= 2) {
+        let tempCart = [...state.cartItems];
+        tempCart[index].qty -= 1;
+        state.cartItems = tempCart;
+        state.subtotal -= tempCart[index].price;
+        state.totalItems -= 1;
+      }
     },
   },
 });
 
-export const { addToCart, increaseItems, decreaseItems, clearCart } =
+export const { addToCart, removeFromCart, clearCart, increment, decrement } =
   cartSlice.actions;
 
 export const cartReducer = cartSlice.reducer;

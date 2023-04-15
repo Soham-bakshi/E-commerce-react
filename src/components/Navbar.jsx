@@ -13,6 +13,11 @@ const links = [
     text: 'add product',
     url: 'addproduct',
   },
+  {
+    id: 3,
+    text: 'cart',
+    url: 'cart',
+  },
 ];
 
 function Navbar() {

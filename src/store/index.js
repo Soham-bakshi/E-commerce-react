@@ -7,9 +7,10 @@ import {
 } from './slice/productSlice';
 import {
   addToCart,
-  decreaseItems,
-  increaseItems,
+  removeFromCart,
   clearCart,
+  increment,
+  decrement,
   cartReducer,
   cartSlice,
 } from './slice/cartSlice';
@@ -32,9 +33,10 @@ export {
   store,
   addProducts,
   addToCart,
-  increaseItems,
-  decreaseItems,
+  removeFromCart,
   clearCart,
+  increment,
+  decrement,
 };
 
 export {
