@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { productsApi } from './apis/productsApi';
 import {
   addProducts,
+  updateSort,
+  sortProducts,
   productsReducer,
   productsSlice,
 } from './slice/productSlice';
@@ -14,7 +17,6 @@ import {
   cartReducer,
   cartSlice,
 } from './slice/cartSlice';
-import { productsApi } from './apis/productsApi';
 
 const store = configureStore({
   reducer: {
@@ -37,6 +39,8 @@ export {
   clearCart,
   increment,
   decrement,
+  sortProducts,
+  updateSort,
 };
 
 export {

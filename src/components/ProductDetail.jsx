@@ -10,15 +10,15 @@ function ProductDetail() {
   const [count, setCount] = useState(1);
 
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => {
+  const { itemsData } = useSelector((state) => {
     return {
-      data: state.product_data,
+      itemsData: state.product_data.allProducts,
     };
   });
 
   const { id } = useParams();
 
-  const productDetail = data.filter((prod) => {
+  const productDetail = itemsData.filter((prod) => {
     return prod.id === Number(id);
   });
 
