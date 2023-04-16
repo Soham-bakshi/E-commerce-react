@@ -6,6 +6,7 @@ import AddProduct from './components/AddProduct';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
 import Error from './components/Error';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="cart" element={<Cart />} />
           <Route path="*" element={<Error />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

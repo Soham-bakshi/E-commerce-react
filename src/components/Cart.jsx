@@ -27,100 +27,103 @@ function Cart() {
   }
 
   return (
-    <main>
-      <Wrapper className="page">
-        <WrapperContent className="section section-center">
-          <WrapperCol>
-            <div className="content">
-              <h5>Item</h5>
-              <h5>Price</h5>
-              <h5>Quantity</h5>
-              <h5>Subtotal</h5>
-              <span></span>
-            </div>
-            <hr />
-          </WrapperCol>
+    <>
+      <WrapperContent>
+        <WrapperCol>
+          <div className="content">
+            <h5>Item</h5>
+            <h5>Price</h5>
+            <h5>Quantity</h5>
+            <h5>Subtotal</h5>
+            <span></span>
+          </div>
+          <hr />
+        </WrapperCol>
 
-          {cartItems.map((item, index) => (
-            <WrapperItem key={item.id}>
-              <div className="title">
-                <img src={item.thumbnail} alt={item.title} />
+        {cartItems.map((item, index) => (
+          <WrapperItem key={item.id}>
+            <div className="title">
+              <img src={item.thumbnail} alt={item.title} />
 
-                <div>
-                  <h5 className="name">{item.title}</h5>
-                  <h5 className="price-small">{item.price}</h5>
-                </div>
+              <div>
+                <h5 className="name">{item.title}</h5>
+                <h5 className="price-small">{item.price}</h5>
               </div>
-              <h5 className="price">{item.price}</h5>
+            </div>
+            <h5 className="price">{item.price}</h5>
 
-              <WrapperButton className="amount-btns">
-                <button
-                  type="button"
-                  className="amount-btn"
-                  onClick={() => dispatch(decrement({ item, index }))}
-                >
-                  <FaMinus />
-                </button>
-                <h2 className="amount">{item.qty}</h2>
-                <button
-                  className="amount-btn"
-                  type="button"
-                  onClick={() => dispatch(increment({ item, index }))}
-                >
-                  <FaPlus />
-                </button>
-              </WrapperButton>
-              <h5 className="subtotal">{item.price * item.qty}</h5>
+            <WrapperButton className="amount-btns">
               <button
                 type="button"
-                className="remove-btn"
-                onClick={() => dispatch(removeFromCart(item))}
+                className="amount-btn"
+                onClick={() => dispatch(decrement({ item, index }))}
               >
-                <MdDeleteForever />
+                <FaMinus />
               </button>
-            </WrapperItem>
-          ))}
-
-          <hr />
-
-          <div className="link-container">
-            <Link to="/" className="link-btn">
-              Continue Shopping
-            </Link>
+              <h2 className="amount">{item.qty}</h2>
+              <button
+                className="amount-btn"
+                type="button"
+                onClick={() => dispatch(increment({ item, index }))}
+              >
+                <FaPlus />
+              </button>
+            </WrapperButton>
+            <h5 className="subtotal">&#8377;{item.price * item.qty}</h5>
             <button
               type="button"
-              className="link-btn clear-btn"
-              onClick={() => dispatch(clearCart())}
+              className="remove-btn"
+              onClick={() => dispatch(removeFromCart(item))}
             >
-              Clear Shopping Cart
+              <MdDeleteForever />
             </button>
-          </div>
+          </WrapperItem>
+        ))}
 
-          <WrapperTotals>
-            <div>
-              <article className="cart-order-content">
-                <h5>
-                  Subtotal : <span>{subtotal}</span>
-                </h5>
-                <p>
-                  Shipping fee : <span>{shippingFee}</span>
-                </p>
-                <hr />
-                <h4>
-                  Order Total : <span>{subtotal + shippingFee}</span>
-                </h4>
-              </article>
-            </div>
-          </WrapperTotals>
-        </WrapperContent>
-      </Wrapper>
-    </main>
+        <hr />
+
+        <div className="link-container">
+          <Link to="/" className="link-btn">
+            Continue Shopping
+          </Link>
+          <button
+            type="button"
+            className="link-btn clear-btn"
+            onClick={() => dispatch(clearCart())}
+          >
+            Clear Shopping Cart
+          </button>
+        </div>
+
+        <WrapperTotals>
+          <div>
+            <article className="cart-order-content">
+              <h5>
+                Subtotal : <span>&#8377;{subtotal}</span>
+              </h5>
+              <p>
+                Shipping fee : <span>&#8377;{shippingFee}</span>
+              </p>
+              <hr />
+              <h4>
+                Order Total : <span>&#8377;{subtotal + shippingFee}</span>
+              </h4>
+            </article>
+          </div>
+        </WrapperTotals>
+      </WrapperContent>
+    </>
   );
 }
 
-const Wrapper = styled.main`
+const Wrapper = styled.div`
   .empty {
     text-align: center;
+    .btn {
+      background: var(--clr-white);
+      color: var(--clr-black);
+      font-size: large;
+    }
     h2 {
       margin-bottom: 1rem;
       text-transform: none;
@@ -129,25 +132,36 @@ const Wrapper = styled.main`
 `;
 
 const WrapperContent = styled.section`
+  display: block;
+  width: min-content;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0 0 10px rgb(255, 255, 255, 0.8);
   .link-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   .link-btn {
     background: transparent;
     border-color: transparent;
     text-transform: capitalize;
     padding: 0.25rem 0.5rem;
-    background: var(--clr-primary-5);
-    color: var(--clr-white);
+    background: var(--clr-white);
+    color: var(--clr-black);
     border-radius: var(--radius);
     letter-spacing: var(--spacing);
     font-weight: 400;
     cursor: pointer;
   }
   .clear-btn {
-    background: var(--clr-black);
+    background: var(--clr-white);
+  }
+  @media (max-width: 776px) {
+    .link-btn {
+      font-size: 10px;
+    }
   }
 `;
 
@@ -161,18 +175,18 @@ const WrapperCol = styled.div`
       justify-items: center;
       column-gap: 1rem;
       h5 {
-        color: var(--clr-grey-5);
+        color: var(--clr-white);
         font-weight: 400;
       }
     }
 
     span {
-      width: 2rem;
-      height: 2rem;
+      width: 1rem;
+      height: 1rem;
     }
     hr {
       margin-top: 1rem;
-      margin-bottom: 3rem;
+      margin-bottom: 1rem;
     }
   }
 `;
@@ -187,9 +201,9 @@ const WrapperItem = styled.article`
   display: grid;
   grid-template-columns: 200px auto auto;
   grid-template-rows: 75px;
-  gap: 3rem 1rem;
+  gap: 1rem 1rem;
   justify-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: 0.5rem;
   align-items: center;
   .title {
     grid-template-rows: 75px;
@@ -205,35 +219,19 @@ const WrapperItem = styled.article`
     display: block;
     border-radius: var(--radius);
     object-fit: cover;
+    box-shadow: 0 0 10px var(--clr-white);
   }
   h5 {
     font-size: 0.75rem;
     margin-bottom: 0;
-  }
-
-  .color {
-    color: var(--clr-grey-5);
-    font-size: 0.75rem;
-    letter-spacing: var(--spacing);
-    text-transform: capitalize;
-    margin-bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    span {
-      display: inline-block;
-      width: 0.5rem;
-      height: 0.5rem;
-      background: red;
-      margin-left: 0.5rem;
-      border-radius: var(--radius);
-    }
+    color: var(--clr-white);
   }
   .price-small {
-    color: var(--clr-primary-5);
+    color: var(--clr-white);
   }
   .amount-btns {
     width: 75px;
+    color: var(--clr-white);
     button {
       width: 1rem;
       height: 0.5rem;
@@ -262,7 +260,7 @@ const WrapperItem = styled.article`
     .subtotal {
       display: block;
       margin-bottom: 0;
-      color: var(--clr-grey-5);
+      color: var(--clr-white);
       font-weight: 400;
       font-size: 1rem;
     }
@@ -272,7 +270,7 @@ const WrapperItem = styled.article`
     .price {
       display: block;
       font-size: 1rem;
-      color: var(--clr-primary-5);
+      color: var(--clr-white);
       font-weight: 400;
     }
     .name {
@@ -319,6 +317,9 @@ const WrapperButton = styled.div`
   justify-items: center;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
+  svg {
+    color: var(--clr-white);
+  }
   h2 {
     margin-bottom: 0;
   }
@@ -339,25 +340,26 @@ const WrapperButton = styled.div`
 `;
 
 const WrapperTotals = styled.section`
-  margin-top: 3rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
   article {
-    border: 1px solid var(--clr-grey-8);
+    border: 1px solid var(--clr-white);
     border-radius: var(--radius);
-    padding: 1.5rem 3rem;
+    padding: 1rem 1rem;
   }
   h4,
   h5,
   p {
     display: grid;
     grid-template-columns: 200px 1fr;
+    color: var(--clr-white);
   }
   p {
     text-transform: capitalize;
   }
   h4 {
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
   }
   @media (min-width: 776px) {
     justify-content: flex-end;

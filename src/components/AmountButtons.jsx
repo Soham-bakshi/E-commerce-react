@@ -17,16 +17,11 @@ const AmountButtons = ({ increment, decrement, count }) => {
 
 const Wrapper = styled.div`
   display: grid;
-  /* width: 140px; */
   justify-items: center;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   h4 {
-    margin-bottom: 0;
-    margin: 8px 0;
-    font-size: 16px;
-    font-weight: 500;
-    color: #333;
+    margin: 1rem 0;
   }
   button {
     background: transparent;

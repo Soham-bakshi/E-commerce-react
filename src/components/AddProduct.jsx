@@ -46,92 +46,101 @@ function AddProduct() {
   };
 
   return (
-    <Wrapper>
-      <div className="container">
-        <h3>add a product</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="title">Title:</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={data.title}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="price">Price:</label>
-            <input
-              type="number"
-              name="price"
-              id="price"
-              value={data.price || ''}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="rating">Rating:</label>
-            <input
-              type="number"
-              name="rating"
-              id="rating"
-              value={data.rating || ''}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="category">Category:</label>
-            <input
-              type="text"
-              name="category"
-              id="category"
-              value={data.category}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="thumbnail">Thumbnail:</label>
-            <input
-              type="text"
-              name="thumbnail"
-              id="thumbnail"
-              value={data.thumbnail}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="description">Description:</label>
-            <textarea
-              name="description"
-              id="description"
-              rows="2"
-              cols="50"
-              value={data.description}
-              onChange={handleChange}
-              required
-            ></textarea>
-          </div>
-          <button type="submit" className="btn">
-            add product
-          </button>
-        </form>
-      </div>
-    </Wrapper>
+    <WrapperPage className="page">
+      <Wrapper>
+        <div className="container">
+          <h3>add a product</h3>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="title">Title:</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                value={data.title}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="price">Price:</label>
+              <input
+                type="number"
+                name="price"
+                id="price"
+                value={data.price || ''}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="rating">Rating:</label>
+              <input
+                type="number"
+                name="rating"
+                id="rating"
+                value={data.rating || ''}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="category">Category:</label>
+              <input
+                type="text"
+                name="category"
+                id="category"
+                value={data.category}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="thumbnail">Thumbnail:</label>
+              <input
+                type="text"
+                name="thumbnail"
+                id="thumbnail"
+                value={data.thumbnail}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="description">Description:</label>
+              <textarea
+                name="description"
+                id="description"
+                rows="2"
+                cols="50"
+                value={data.description}
+                onChange={handleChange}
+                required
+              ></textarea>
+            </div>
+            <button type="submit" className="btn">
+              add product
+            </button>
+          </form>
+        </div>
+      </Wrapper>
+    </WrapperPage>
   );
 }
 
+const WrapperPage = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--clr-black);
+`;
+
 const Wrapper = styled.div`
-  background-color: #ffffff;
+  background-color: rgb(0, 0, 0);
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(255 255, 255, 0.8);
   padding: 20px;
-  margin: 20px auto;
+  margin: 2rem 0;
   max-width: 600px;
   .container {
     display: flex;
@@ -142,6 +151,7 @@ const Wrapper = styled.div`
   h3 {
     text-align: center;
     margin-bottom: 1rem;
+    color: var(--clr-white);
   }
   .form-group {
     margin-bottom: 1rem;
@@ -150,6 +160,7 @@ const Wrapper = styled.div`
     display: block;
     font-weight: bold;
     margin-bottom: 0.5rem;
+    color: var(--clr-white);
   }
   input,
   textarea {

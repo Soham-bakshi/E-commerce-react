@@ -5,10 +5,9 @@ import { useEffect } from 'react';
 
 function Sort() {
   const dispatch = useDispatch();
-  const { sort, itemsData } = useSelector((state) => {
+  const { sort } = useSelector((state) => {
     return {
       sort: state.product_data.sort,
-      itemsData: state.product_data.allProducts,
     };
   });
 
@@ -23,9 +22,8 @@ function Sort() {
 
   return (
     <Wrapper>
-      <p>{itemsData.length} products found</p>
       <form>
-        <label htmlFor="sort">sort by</label>
+        <label htmlFor="sort">sort by : </label>
         <select
           name="sort"
           id="sort"
@@ -46,7 +44,7 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: right;
   margin: 2rem 0;
   @media (max-width: 576px) {
     label {
@@ -54,22 +52,18 @@ const Wrapper = styled.section`
       margin-right: 0.5rem;
     }
   }
-  p {
-    text-transform: capitalize;
-    margin-bottom: 0;
-    font-size: 20px;
-    font-weight: 500;
-  }
   .sort-input {
     border-color: transparent;
     font-size: 1rem;
     text-transform: capitalize;
     padding: 0.25rem 0.5rem;
+    border-radius: 0.3rem;
   }
   label {
     font-size: 20px;
     font-weight: 500;
     text-transform: capitalize;
+    color: var(--clr-white);
   }
 `;
 

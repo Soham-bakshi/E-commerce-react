@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addProducts } from '../store';
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import Loading from './Loading';
+import Error from './Error';
 
 function ProductsList() {
   const { data, error, isLoading, isSuccess } = useFetchProductsQuery();
@@ -21,26 +23,20 @@ function ProductsList() {
   });
 
   if (isLoading) {
-    return (
-      <div>
-        <h2>loading...</h2>
-      </div>
-    );
+    return <Loading />;
   }
 
   if (error) {
-    return <div>Error fetching data...</div>;
+    return <Error />;
   }
 
   return (
     <main>
-      <div className="page">
+      <WrapperPage className="page">
         <div className="section-center products">
           <div>
             {!items.length ? (
-              <div>
-                <h2>loading...</h2>
-              </div>
+              <Loading />
             ) : (
               <>
                 <Sort />
@@ -51,22 +47,14 @@ function ProductsList() {
             )}
           </div>
         </div>
-      </div>
+      </WrapperPage>
     </main>
   );
 }
 
-const Wrapper = styled.div`
-  .products {
-    display: grid;
-    gap: 3rem 1.5rem;
-    margin: 4rem auto;
-  }
-  @media (min-width: 768px) {
-    .products {
-      grid-template-columns: 200px 1fr;
-    }
-  }
+const WrapperPage = styled.div`
+  padding: 1rem;
+  background: var(--clr-black);
 `;
 
 export default ProductsList;

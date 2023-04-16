@@ -65,7 +65,7 @@ function ProductDetail() {
   };
 
   return (
-    <Wrapper className="page">
+    <Wrapper className="section section-center">
       <div className="container">
         <div className="info">
           <div className="image">
@@ -75,7 +75,7 @@ function ProductDetail() {
           <h4>Brand : {brand}</h4>
           <h4>Category : {category}</h4>
           <h4>Description : {description}</h4>
-          <h4>Price : {price}</h4>
+          <h4>Price : &#8377;{price}</h4>
           <h4>Rating : {rating}</h4>
           <h4>
             Quantity :{' '}
@@ -102,21 +102,19 @@ function ProductDetail() {
 }
 
 const Wrapper = styled.div`
-  display: block;
-  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .container {
-    max-width: 800px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: var(--clr-white);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     border-radius: 8px;
     padding: 24px;
   }
   .info {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -131,10 +129,6 @@ const Wrapper = styled.div`
     border-radius: 8px;
   }
   h4 {
-    margin: 8px 0;
-    font-size: 16px;
-    font-weight: 500;
-    color: #333;
     display: flex;
     align-items: center;
   }
@@ -146,6 +140,14 @@ const Wrapper = styled.div`
     margin-top: 24px;
     flex-direction: row;
     align-items: center;
+  }
+  .btn {
+    background: var(--clr-black);
+  }
+  @media (min-width: 800px) {
+    .container {
+      display: block;
+    }
   }
 `;
 

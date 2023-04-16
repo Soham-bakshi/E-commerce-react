@@ -86,7 +86,7 @@ function ProductItem({ item }) {
           </div>
           <div className="info">
             <h3>Name : {item.title}</h3>
-            <h4>Price : {item.price}</h4>
+            <h4>Price : &#8377;{item.price}</h4>
             <h4 style={{ display: 'flex' }}>
               Rating :{' '}
               <span style={{ margin: '0.05rem 0.5rem' }}>
@@ -210,78 +210,59 @@ function ProductItem({ item }) {
 const Wrapper = styled.div`
   .container {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--clr-white);
     margin-bottom: 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
     border-radius: 10px;
-    background-color: #fff;
+    background-color: rgb(0, 0, 0);
   }
   .image img {
     width: 250px;
     height: auto;
     border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.9);
   }
   .info {
     display: flex;
     flex-direction: column;
     margin-left: 20px;
   }
-  .info h3,
-  .info h4,
-  .info h5 {
-    margin: 0;
-  }
-  .info h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  .info h4,
-  .info h5 {
-    font-size: 18px;
-    margin-bottom: 5px;
-    color: #777;
-  }
   .form-content {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
   }
-  .form-content h3,
-  .form-content h4,
-  .form-content h5 {
-    margin: 0;
-    color: #333;
-  }
   .form-content input,
   .form-content textarea {
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--clr-white);
     border-radius: 5px;
-    font-size: 18px;
     margin-top: 5px;
-    transition: border-color 0.3s ease;
   }
-  .form-content input:focus,
-  .form-content textarea:focus {
-    border-color: #0080ff;
+  h3,
+  h4,
+  h5,
+  label {
+    color: var(--clr-white);
   }
-  .form-content textarea {
-    resize: none;
+
+  @media only screen and (max-width: 800px) {
+    .container {
+      flex-direction: column;
+      .image {
+        margin-bottom: 10px;
+      }
+    }
   }
   .btn-icon {
     border: none;
     background: transparent;
-    /* box-shadow: none; */
   }
   .btn svg {
     height: 20px;
     width: 20px;
-    fill: #333232;
+    fill: var(--clr-red-dark);
   }
   .btn-container {
     display: flex;
@@ -291,35 +272,6 @@ const Wrapper = styled.div`
   }
   .btn-margin {
     margin-right: 10px;
-  }
-
-  @media only screen and (max-width: 768px) {
-    .container {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .image {
-      margin-bottom: 10px;
-    }
-    .info h3 {
-      font-size: 20px;
-    }
-    .info h4,
-    .info h5 {
-      font-size: 16px;
-    }
-    .form-content h3,
-    .form-content h4,
-    .form-content h5 {
-      font-size: 16px;
-    }
-    .form-content input,
-    .form-content textarea {
-      font-size: 16px;
-    }
-    /* h4 span {
-      display: block;
-    } */
   }
 `;
 

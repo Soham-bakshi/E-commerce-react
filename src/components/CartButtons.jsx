@@ -1,17 +1,17 @@
 import React from 'react';
-import { FaShoppingCart, FaUserMinus, FaUserPlus } from 'react-icons/fa';
+import { FaShoppingCart, FaUserPlus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
-const CartButtons = () => {
+const CartButtons = ({ handleClick }) => {
   const quantity = useSelector((state) => {
     return state.cart_data.totalItems;
   });
 
   return (
     <Wrapper className="cart-btn-wrapper">
-      <Link to="/cart" className="cart-btn">
+      <Link to="/cart" className="cart-btn" onClick={handleClick}>
         Cart
         <span className="cart-container">
           <FaShoppingCart />
@@ -53,7 +53,7 @@ const Wrapper = styled.div`
     position: absolute;
     top: -10px;
     right: -16px;
-    background: var(--clr-primary-5);
+    background: var(--clr-red-dark);
     width: 16px;
     height: 16px;
     display: flex;

@@ -1,11 +1,16 @@
-import React from "react";
+import styled from 'styled-components';
 
 const Loading = () => {
   return (
-    <div className="section section-center">
+    <Wrapper className="section section-center">
       <div className="loading"></div>
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  width: 90vw;
+  height: 90vh;
+`;
 
 export default Loading;
