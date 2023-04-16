@@ -140,8 +140,9 @@ const Wrapper = styled.div`
       font-size: large;
     }
     h2 {
-      margin-bottom: 1rem;
+      margin-bottom: 3rem;
       text-transform: none;
+      color: var(--clr-white);
     }
   }
 `;

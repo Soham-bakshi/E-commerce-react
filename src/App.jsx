@@ -32,7 +32,7 @@ function App() {
           <Route path="addproduct" element={<AddProduct />} />
           <Route path="productdetail/:id" element={<ProductDetail />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="*" element={<Error />} />
+          <Route path="*" element={<Error message="page does not exist!" />} />
         </Routes>
         <Footer />
       </BrowserRouter>

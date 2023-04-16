@@ -1,11 +1,17 @@
-import React from 'react';
+import styled from 'styled-components';
 
-const Error = () => {
+const Error = ({ message }) => {
   return (
-    <div className="section section-center text-center">
-      <h2>there was an error...</h2>
-    </div>
+    <Wrapper className="section section-center text-center">
+      <h2>{message}...</h2>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  width: 90vw;
+  height: 80vh;
+  color: var(--clr-white);
+`;
 
 export default Error;

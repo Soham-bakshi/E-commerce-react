@@ -23,11 +23,11 @@ function ProductsList() {
   });
 
   if (isLoading) {
-    return <Loading />;
+    return <Loading message="loading data" />;
   }
 
   if (error) {
-    return <Error />;
+    return <Error message="there was a error while fetching data" />;
   }
 
   return (
@@ -36,7 +36,7 @@ function ProductsList() {
         <div className="section-center products">
           <div>
             {!items.length ? (
-              <Loading />
+              <Loading message="processing data" />
             ) : (
               <>
                 <Sort />
