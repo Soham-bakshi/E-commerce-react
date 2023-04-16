@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { addToCart } from '../store';
 import AmountButtons from './AmountButtons';
+import Stars from './Stars';
 import { useState } from 'react';
 
 function ProductDetail() {
@@ -76,7 +77,16 @@ function ProductDetail() {
           <h4>Category : {category}</h4>
           <h4>Description : {description}</h4>
           <h4>Price : &#8377;{price}</h4>
-          <h4>Rating : {rating}</h4>
+          <h4>
+            Rating :{' '}
+            <span
+              style={{
+                margin: '0.5rem 0.5rem 0 0.5rem',
+              }}
+            >
+              <Stars stars={rating} />
+            </span>
+          </h4>
           <h4>
             Quantity :{' '}
             <span>
@@ -109,9 +119,9 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--clr-white);
+    background-color: rgb(0, 0, 0);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 24px;
   }
   .info {
@@ -127,10 +137,12 @@ const Wrapper = styled.div`
     max-width: 40%;
     height: auto;
     border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.9);
   }
   h4 {
     display: flex;
     align-items: center;
+    color: var(--clr-white);
   }
   .btn-container {
     display: flex;
@@ -142,7 +154,7 @@ const Wrapper = styled.div`
     align-items: center;
   }
   .btn {
-    background: var(--clr-black);
+    background: var(--clr-white);
   }
   @media (min-width: 800px) {
     .container {

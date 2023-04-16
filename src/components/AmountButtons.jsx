@@ -23,6 +23,9 @@ const Wrapper = styled.div`
   h4 {
     margin: 1rem 0;
   }
+  svg {
+    color: var(--clr-white);
+  }
   button {
     background: transparent;
     border-color: transparent;

@@ -19,7 +19,7 @@ function Navbar() {
         <div className="nav-center">
           <div className="nav-header">
             <Link to="/">
-              <span>E-COMMERCE</span>
+              <span>E-COMMERCE(P666R)</span>
             </Link>
             <button type="button" className="nav-toggle" onClick={handleClick}>
               <FaBars />
@@ -38,11 +38,10 @@ function Navbar() {
           <CartButtons />
         </div>
       </NavContainer>
-
       <SidebarContainer>
         <aside className={`${isOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
           <div className="sidebar-header">
-            <span>E-COMMERCE</span>
+            <span>E-COMMERCE(P666R)</span>
             <button type="button" className="close-btn" onClick={handleClick}>
               <FaTimes />
             </button>
@@ -57,11 +56,6 @@ function Navbar() {
                 </li>
               );
             })}
-            {/* <li>
-              <Link to="/cart" onClick={() => setIsOpen(!isOpen)}>
-                cart
-              </Link>
-            </li> */}
           </ul>
           <CartButtons handleClick={handleClick} />
         </aside>
@@ -108,10 +102,7 @@ const NavContainer = styled.nav`
   .nav-header span {
     font-weight: 900;
     font-size: 1.2rem;
-    color: var(--clr-black);
-    text-decoration-line: underline overline;
-    text-decoration-color: var(--clr-red-dark);
-    text-decoration-thickness: 4px;
+    color: var(--clr-red-dark);
   }
   @media (min-width: 992px) {
     .nav-toggle {
@@ -135,7 +126,7 @@ const NavContainer = styled.nav`
         letter-spacing: var(--spacing);
         padding: 0.5rem;
         &:hover {
-          border-bottom: 2px solid var(--clr-red-dark);
+          border-bottom: 2px solid var(--clr-black);
         }
       }
     }
@@ -153,6 +144,11 @@ const SidebarContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
+  }
+  .sidebar-header span {
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--clr-red-dark);
   }
   .close-btn {
     font-size: 2rem;
