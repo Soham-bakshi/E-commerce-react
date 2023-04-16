@@ -13,6 +13,7 @@ import {
 } from '../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 
 function ProductItem({ item }) {
   // local states
@@ -28,7 +29,7 @@ function ProductItem({ item }) {
   // accessing the store
   const { cart } = useSelector((state) => {
     return {
-      cart: state.cart_data.cart,
+      cart: state.cart_data.cartItems,
     };
   });
 
@@ -80,6 +81,10 @@ function ProductItem({ item }) {
       theme: 'dark',
     });
   };
+
+  // useEffect(() => {
+  //   localStorage.setItem('cart', JSON.stringify(cart));
+  // }, [cart]);
 
   return (
     <Wrapper>

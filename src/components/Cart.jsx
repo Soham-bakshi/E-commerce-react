@@ -140,7 +140,7 @@ const Wrapper = styled.div`
       font-size: large;
     }
     h2 {
-      margin-bottom: 3rem;
+      margin-bottom: 3 rem;
       text-transform: none;
       color: var(--clr-white);
     }

@@ -1,13 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const getLocalStorage = () => {
+  let cart = localStorage.getItem('cartData');
+  if (cart) {
+    return JSON.parse(localStorage.getItem('cartData'));
+  } else {
+    return {
+      cartItems: [],
+      subtotal: 0,
+      totalItems: 0,
+      shippingFee: 100,
+    };
+  }
+};
+
+// cart slice with the mini reducers logic and automatically created actions
 export const cartSlice = createSlice({
   name: 'cart_data',
-  initialState: {
-    cartItems: [],
-    subtotal: 0,
-    totalItems: 0,
-    shippingFee: 100,
-  },
+  initialState: getLocalStorage(),
   reducers: {
     addToCart: (state, { payload }) => {
       let tempCart = [...state.cartItems];
@@ -26,6 +36,8 @@ export const cartSlice = createSlice({
       state.cartItems = tempCart;
       state.subtotal = subtotal;
       state.totalItems = totalItems;
+
+      localStorage.setItem('cartData', JSON.stringify(state));
     },
     removeFromCart: (state, { payload }) => {
       const id = payload.id;
@@ -36,11 +48,15 @@ export const cartSlice = createSlice({
       state.cartItems = tempCart;
       state.subtotal = subtotal;
       state.totalItems = totalItems;
+
+      localStorage.setItem('cartData', JSON.stringify(state));
     },
     clearCart: (state) => {
       state.cartItems = [];
       state.subtotal = 0;
       state.totalItems = 0;
+
+      localStorage.setItem('cartData', JSON.stringify(state));
     },
     increment: (state, { payload }) => {
       const index = payload.index;
@@ -49,6 +65,8 @@ export const cartSlice = createSlice({
       state.cartItems = tempCart;
       state.subtotal += tempCart[index].price;
       state.totalItems += 1;
+
+      localStorage.setItem('cartData', JSON.stringify(state));
     },
     decrement: (state, { payload }) => {
       const item = payload.item;
@@ -60,11 +78,15 @@ export const cartSlice = createSlice({
         state.subtotal -= tempCart[index].price;
         state.totalItems -= 1;
       }
+
+      localStorage.setItem('cartData', JSON.stringify(state));
     },
   },
 });
 
+// action creators
 export const { addToCart, removeFromCart, clearCart, increment, decrement } =
   cartSlice.actions;
 
+// combined reducer
 export const cartReducer = cartSlice.reducer;

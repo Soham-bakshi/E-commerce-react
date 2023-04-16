@@ -1,15 +1,16 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import Navbar from './components/Navbar';
-import ProductsList from './components/ProductsList';
-import AddProduct from './components/AddProduct';
-import ProductDetail from './components/ProductDetail';
-import Cart from './components/Cart';
-import Error from './components/Error';
-import Footer from './components/Footer';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
+import ProductsList from './components/ProductsList';
+import ProductDetail from './components/ProductDetail';
+import AddProduct from './components/AddProduct';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Error from './components/Error';
+import Cart from './components/Cart';
+
+// implemented client side routing (react router)
 function App() {
   return (
     <div>
