@@ -4,6 +4,7 @@ import { removeFromCart, clearCart, increment, decrement } from '../store';
 import { Link } from 'react-router-dom';
 import { MdDeleteForever } from 'react-icons/md';
 import { FaPlus, FaMinus } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 function Cart() {
   const dispatch = useDispatch();
@@ -73,7 +74,14 @@ function Cart() {
             <button
               type="button"
               className="remove-btn"
-              onClick={() => dispatch(removeFromCart(item))}
+              onClick={() => {
+                toast.warn('Product removed!', {
+                  position: 'top-right',
+                  autoClose: 3000,
+                  theme: 'dark',
+                });
+                return dispatch(removeFromCart(item));
+              }}
             >
               <MdDeleteForever />
             </button>
@@ -89,7 +97,14 @@ function Cart() {
           <button
             type="button"
             className="link-btn clear-btn"
-            onClick={() => dispatch(clearCart())}
+            onClick={() => {
+              toast.warn('Cart cleared!', {
+                position: 'top-right',
+                autoClose: 3000,
+                theme: 'dark',
+              });
+              return dispatch(clearCart());
+            }}
           >
             Clear Shopping Cart
           </button>

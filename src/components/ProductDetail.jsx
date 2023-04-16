@@ -6,6 +6,7 @@ import { addToCart } from '../store';
 import AmountButtons from './AmountButtons';
 import Stars from './Stars';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 function ProductDetail() {
   const [count, setCount] = useState(1);
@@ -63,6 +64,11 @@ function ProductDetail() {
       price: price,
     };
     dispatch(addToCart(item));
+    toast.success('Products added to cart!', {
+      position: 'top-right',
+      autoClose: 3000,
+      theme: 'dark',
+    });
   };
 
   return (
@@ -99,9 +105,9 @@ function ProductDetail() {
           </h4>
         </div>
         <div className="btn-container">
-          <Link to="/cart" className="btn" onClick={handleAddToCart}>
+          <button className="btn" onClick={handleAddToCart}>
             Add to cart
-          </Link>
+          </button>
           <Link to="/" className="btn">
             Continue shopping
           </Link>

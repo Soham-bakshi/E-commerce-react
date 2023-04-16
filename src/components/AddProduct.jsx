@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useAddProductMutation } from '../store';
+import { toast } from 'react-toastify';
 
 function AddProduct() {
   const [data, setData] = useState({
@@ -42,6 +43,11 @@ function AddProduct() {
     e.preventDefault();
 
     addProduct(data);
+    toast.success('Product added to DB!', {
+      position: 'top-right',
+      autoClose: 3000,
+      theme: 'dark',
+    });
     navigate('/');
   };
 

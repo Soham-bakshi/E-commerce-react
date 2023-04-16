@@ -6,14 +6,13 @@ import Stars from './Stars';
 import { useNavigate } from 'react-router-dom';
 import { MdOutlineDeleteForever } from 'react-icons/md';
 import { BsFillCartCheckFill } from 'react-icons/bs';
-import { FaShoppingBag } from 'react-icons/fa';
 import {
   addToCart,
   useRemoveProductMutation,
   useUpdateProductMutation,
 } from '../store';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function ProductItem({ item }) {
   // local states
@@ -53,7 +52,11 @@ function ProductItem({ item }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    toast.success('Product edited!', {
+      position: 'top-right',
+      autoClose: 3000,
+      theme: 'dark',
+    });
     updateProduct(data);
     setIsEdit(!isEdit);
   };
@@ -71,6 +74,11 @@ function ProductItem({ item }) {
       price: item.price,
     };
     dispatch(addToCart(cartItem));
+    toast.success('Product added to cart!', {
+      position: 'top-right',
+      autoClose: 3000,
+      theme: 'dark',
+    });
   };
 
   return (
@@ -119,7 +127,14 @@ function ProductItem({ item }) {
               <button
                 className="btn btn-icon btn-margin"
                 type="button"
-                onClick={() => removeProduct(item.id)}
+                onClick={() => {
+                  toast.warn('Product removed!', {
+                    position: 'top-right',
+                    autoClose: 3000,
+                    theme: 'dark',
+                  });
+                  return removeProduct(item.id);
+                }}
               >
                 <MdOutlineDeleteForever />
               </button>
