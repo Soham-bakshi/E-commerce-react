@@ -1,5 +1,5 @@
 # <div align="center">E-commerce-React
-
+## <div align="center" >Submitted as part of an assignment</div>
 </div>
 
 # Technologies Used:
@@ -16,7 +16,6 @@
 
 ### 6. React Toastify
 
-### 7. CSS
 
 ## Deployed Server : https://ecommerce-react-data.onrender.com
 
