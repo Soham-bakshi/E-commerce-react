@@ -31,14 +31,21 @@
 
 # <div align="center">
 
-<!-- ![app](https://github.com/P666R/Albums-List-React-App/blob/main/public/alb.jpg) -->
+![app](https://github.com/P666R/E-commerce-React/blob/main/public/1.png)
 </div>
 
 <hr/>
 
 # <div align="center">
 
-<!-- ![app1](https://github.com/P666R/Albums-List-React-App/blob/main/public/alb1.jpg) -->
+<!-- ![app1](https://github.com/P666R/E-commerce-React/blob/main/public/2.png) -->
+</div>
+
+<hr/>
+
+# <div align="center">
+
+<!-- ![app1](https://github.com/P666R/E-commerce-React/blob/main/public/3.png) -->
 </div>
 
 <hr/>
@@ -47,11 +54,8 @@
 
 - 📂 **ecommerce**
   - 📂 **public**
-    - 📄 [1.png](public/1.png)
-    - 📄 [2.png](public/2.png)
-    - 📄 [3.png](public/3.png)
   - 📂 **src**
-    - 📄 [App.jsx](src/App.jsx)
+    
     - 📂 **assets**
       - 📄 [logo.svg](src/assets/logo.svg)
       - 📄 [react.svg](src/assets/react.svg)
@@ -81,10 +85,11 @@
         - 📄 [productSlice.js](src/store/slice/productSlice.js)
     - 📂 **utils**
       - 📄 [constants.js](src/utils/constants.js)
-  - 📄 [README.md](README.md)
+  - 📄 [App.jsx](src/App.jsx)
   - 📄 [index.html](index.html)
   - 📄 [package\-lock.json](package-lock.json)
   - 📄 [package.json](package.json)
+  - 📄 [README.md](README.md)
   - 📄 [vite.config.js](vite.config.js)
 
 ## This project was bootstrapped with [Vite](https://vitejs.dev/)
