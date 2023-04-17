@@ -1,5 +1,7 @@
 # <div align="center">E-commerce-React
+
 ## <div align="center" >Submitted as part of an assignment</div>
+
 </div>
 
 # Technologies Used:
@@ -16,7 +18,6 @@
 
 ### 6. React Toastify
 
-
 ## Deployed API Service : https://ecommerce-react-data.onrender.com
 
 # <div align="center">
@@ -24,6 +25,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/fa6cc23e-b705-4b2d-b4d0-32171e3c8b85/deploy-status)](https://app.netlify.com/sites/e-commerce-react-p666r/deploys)
 
 ## Hosted Link: https://e-commerce-react-p666r.netlify.app/
+
 </div>
 </div>
 
@@ -32,21 +34,54 @@
 # <div align="center">
 
 ![app](https://github.com/P666R/E-commerce-React/blob/main/public/1.png)
+
 </div>
+
+## Home page feature:
+
+1. Navbar with cart items count and relevant navigation links
+2. List of products from own API
+3. Each product is editable inline
+4. Each product is deletable
+5. Sorting based on ascending and descending order of price
+6. Button to add a product to cart
+7. Button to show all the details of a product
+8. Relevant notifications
 
 <hr/>
 
 # <div align="center">
 
 ![app1](https://github.com/P666R/E-commerce-React/blob/main/public/2.png)
+
 </div>
+
+## Add product page feature:
+
+1. Form to add a product in the DB
+2. Relevant navigations and notifications
 
 <hr/>
 
 # <div align="center">
 
 ![app1](https://github.com/P666R/E-commerce-React/blob/main/public/3.png)
+
 </div>
+
+## Cart page feature:
+
+1. Shows all the items in the cart
+2. Increase and decrease items, delete item and clear cart buttons
+3. Relevant navigations and notifications
+
+<hr/>
+
+## General feature:
+
+1. Handled errors and success alerts etc
+2. Handled errors etc from API with appropriate alerts/notifications
+3. Data persistance for cart data using local storage
 
 <hr/>
 
@@ -54,7 +89,7 @@
 
 - 📂 **ecommerce**
   - 📂 **public**
-  - 📂 **src** 
+  - 📂 **src**
     - 📂 **assets**
     - 📂 **components**
       - 📄 [AddProduct.jsx](src/components/AddProduct.jsx)
@@ -75,7 +110,7 @@
     - 📄 [main.jsx](src/main.jsx)
     - 📂 **store**
       - 📂 **apis**
-        - 📄 [productsApi.js](src/store/apis/productsApi.js)  
+        - 📄 [productsApi.js](src/store/apis/productsApi.js)
       - 📂 **slice**
         - 📄 [cartSlice.js](src/store/slice/cartSlice.js)
         - 📄 [productSlice.js](src/store/slice/productSlice.js)
