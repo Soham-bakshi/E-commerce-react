@@ -9,6 +9,7 @@ const Loading = ({ message }) => {
   );
 };
 
+// styled components
 const Wrapper = styled.div`
   display: block;
   text-align: center;

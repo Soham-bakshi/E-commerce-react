@@ -15,6 +15,7 @@ const AmountButtons = ({ increment, decrement, count }) => {
   );
 };
 
+//  styled components
 const Wrapper = styled.div`
   display: grid;
   justify-items: center;

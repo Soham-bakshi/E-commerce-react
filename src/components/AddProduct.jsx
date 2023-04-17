@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useAddProductMutation } from '../store';
-import { toast } from 'react-toastify';
 
 function AddProduct() {
+  // component level state for controlled inputs
   const [data, setData] = useState({
     id: Date.now(),
     title: '',
@@ -15,9 +16,13 @@ function AddProduct() {
     thumbnail: '',
   });
 
+  // RTK Query hook for POST request
   const [addProduct] = useAddProductMutation();
+
+  // hook for programmatic navigation
   const navigate = useNavigate();
 
+  // onchange handlers
   const handleChange = (e) => {
     if (e.target.name === 'title') {
       setData({ ...data, title: e.target.value });
@@ -39,9 +44,10 @@ function AddProduct() {
     }
   };
 
+  // onsubmit handler
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    // calling mutation function with payload to initiate POST request
     addProduct(data);
     toast.success('Product added to DB!', {
       position: 'top-right',
@@ -134,13 +140,13 @@ function AddProduct() {
   );
 }
 
+// styled components
 const WrapperPage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--clr-black);
 `;
-
 const Wrapper = styled.div`
   background-color: rgb(0, 0, 0);
   border-radius: 10px;

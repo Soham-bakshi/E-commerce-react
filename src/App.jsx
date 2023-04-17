@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 import Error from './components/Error';
 import Cart from './components/Cart';
 
-// implemented client side routing (react router)
+// client side routing (react router 6)
 function App() {
   return (
     <div>

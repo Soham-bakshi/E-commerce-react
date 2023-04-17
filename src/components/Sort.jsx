@@ -1,20 +1,25 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { sortProducts, updateSort } from '../store';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
 function Sort() {
+  // useDispatch hook to access dispatch function from redux stor
   const dispatch = useDispatch();
+
+  // accessing redux store
   const { sort } = useSelector((state) => {
     return {
       sort: state.product_data.sort,
     };
   });
 
+  // dispatch action creator every time sort state changes
   useEffect(() => {
     dispatch(sortProducts());
   }, [sort]);
 
+  // dispatch action creator with user selected option as payload
   const updateItemsSort = (e) => {
     const value = e.target.value;
     dispatch(updateSort(value));
@@ -40,6 +45,7 @@ function Sort() {
   );
 }
 
+// styled components
 const Wrapper = styled.section`
   display: flex;
   flex-direction: row;

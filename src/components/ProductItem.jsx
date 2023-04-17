@@ -1,32 +1,32 @@
+import Stars from './Stars';
+import { useState } from 'react';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 import { FaEdit } from 'react-icons/fa';
 import { BiDetail } from 'react-icons/bi';
-import { useState } from 'react';
-import Stars from './Stars';
 import { useNavigate } from 'react-router-dom';
-import { MdOutlineDeleteForever } from 'react-icons/md';
 import { BsFillCartCheckFill } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import { MdOutlineDeleteForever } from 'react-icons/md';
 import {
   addToCart,
   useRemoveProductMutation,
   useUpdateProductMutation,
 } from '../store';
-import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { useEffect } from 'react';
 
 function ProductItem({ item }) {
-  // local states
+  // component level state to handle edit functionality
   const [data, setData] = useState({
     ...item,
   });
+  // component level state to handle edit toggle functionality
   const [isEdit, setIsEdit] = useState(false);
 
-  // RTQ hooks
+  // RTK Query hook for PUT and DELETE request
   const [removeProduct] = useRemoveProductMutation();
   const [updateProduct] = useUpdateProductMutation();
 
-  // accessing the store
+  // accessing state from redux store
   const { cart } = useSelector((state) => {
     return {
       cart: state.cart_data.cartItems,
@@ -34,8 +34,10 @@ function ProductItem({ item }) {
   });
 
   const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
+  //  onchange handlers
   const handleChange = (e) => {
     if (e.target.name === 'title') {
       setData({ ...data, title: e.target.value });
@@ -51,6 +53,7 @@ function ProductItem({ item }) {
     }
   };
 
+  // onsubmit handler
   const handleSubmit = (e) => {
     e.preventDefault();
     toast.success('Product edited!', {
@@ -58,14 +61,17 @@ function ProductItem({ item }) {
       autoClose: 3000,
       theme: 'dark',
     });
+    // dispatching action object
     updateProduct(data);
     setIsEdit(!isEdit);
   };
 
+  // programmatic navigation
   const handleClick = (id) => {
     navigate(`productdetail/${id}`);
   };
 
+  // handler to add product to cart
   const handleAddToCart = () => {
     const cartItem = {
       title: item.title,
@@ -74,6 +80,7 @@ function ProductItem({ item }) {
       qty: 1,
       price: item.price,
     };
+    // dispatching action object
     dispatch(addToCart(cartItem));
     toast.success('Product added to cart!', {
       position: 'top-right',
@@ -81,10 +88,6 @@ function ProductItem({ item }) {
       theme: 'dark',
     });
   };
-
-  // useEffect(() => {
-  //   localStorage.setItem('cart', JSON.stringify(cart));
-  // }, [cart]);
 
   return (
     <Wrapper>
@@ -227,6 +230,7 @@ function ProductItem({ item }) {
   );
 }
 
+// styled components
 const Wrapper = styled.div`
   .container {
     display: flex;
@@ -266,7 +270,6 @@ const Wrapper = styled.div`
   label {
     color: var(--clr-white);
   }
-
   @media only screen and (max-width: 800px) {
     .container {
       flex-direction: column;

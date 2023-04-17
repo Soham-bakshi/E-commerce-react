@@ -1,3 +1,4 @@
+// single source for all our components for their required action creators, RTX query hooks
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { productsApi } from './apis/productsApi';
@@ -18,12 +19,15 @@ import {
   cartSlice,
 } from './slice/cartSlice';
 
+// redux store creation
 const store = configureStore({
+  // adding combined reducers to store
   reducer: {
     [productsSlice.name]: productsReducer,
     [cartSlice.name]: cartReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
+  // middleware to add albumsApi from RTK query
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware().concat(productsApi.middleware);
   },
@@ -31,6 +35,7 @@ const store = configureStore({
 
 setupListeners(store.dispatch);
 
+// re-exporting the action creators
 export {
   store,
   addProducts,
@@ -43,6 +48,7 @@ export {
   updateSort,
 };
 
+// re-exporting the RTK query hooks
 export {
   useFetchProductsQuery,
   useAddProductMutation,

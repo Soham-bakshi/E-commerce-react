@@ -1,25 +1,29 @@
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { addToCart } from '../store';
-import AmountButtons from './AmountButtons';
 import Stars from './Stars';
 import { useState } from 'react';
+import { addToCart } from '../store';
 import { toast } from 'react-toastify';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import AmountButtons from './AmountButtons';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 function ProductDetail() {
   const [count, setCount] = useState(1);
 
   const dispatch = useDispatch();
+
+  // accessing state from redux store
   const { itemsData } = useSelector((state) => {
     return {
       itemsData: state.product_data.allProducts,
     };
   });
 
+  // hook to get dynamic params from the current URL
   const { id } = useParams();
 
+  // functionality to get the product corresponding to the param id
   const productDetail = itemsData.filter((prod) => {
     return prod.id === Number(id);
   });
@@ -35,6 +39,7 @@ function ProductDetail() {
     stock,
   } = productDetail[0];
 
+  // handlers to increase/decrease the quantity of 1 item
   const increment = () => {
     setCount((oldCount) => {
       let tempCount = oldCount + 1;
@@ -44,7 +49,6 @@ function ProductDetail() {
       return tempCount;
     });
   };
-
   const decrement = () => {
     setCount((oldCount) => {
       let tempCount = oldCount - 1;
@@ -63,6 +67,8 @@ function ProductDetail() {
       qty: count,
       price: price,
     };
+
+    // dispatching action object
     dispatch(addToCart(item));
     toast.success('Products added to cart!', {
       position: 'top-right',
@@ -117,6 +123,7 @@ function ProductDetail() {
   );
 }
 
+// styled components
 const Wrapper = styled.div`
   display: flex;
   align-items: center;

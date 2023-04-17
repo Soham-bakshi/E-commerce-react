@@ -8,6 +8,7 @@ const Error = ({ message }) => {
   );
 };
 
+// styled components
 const Wrapper = styled.div`
   width: 90vw;
   height: 80vh;

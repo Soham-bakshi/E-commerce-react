@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// product slice with the mini-reducers logic and automatically created actions
 export const productsSlice = createSlice({
   name: 'product_data',
   initialState: {
@@ -8,6 +9,7 @@ export const productsSlice = createSlice({
     filteredProducts: [],
   },
   reducers: {
+    // mini-reducer to add fetched products array from API
     addProducts(state, action) {
       return {
         ...state,
@@ -16,9 +18,11 @@ export const productsSlice = createSlice({
       };
     },
     updateSort(state, action) {
+      // mini-reducer to set sort state as per user input
       return { ...state, sort: action.payload };
     },
     sortProducts(state, action) {
+      // mini-reducer to implement the set sort
       const { sort, filteredProducts } = state;
       let tempProducts = [...filteredProducts];
       if (sort === 'none') {
@@ -35,6 +39,8 @@ export const productsSlice = createSlice({
   },
 });
 
+// action creators
 export const { addProducts, updateSort, sortProducts } = productsSlice.actions;
 
+// combined reducer
 export const productsReducer = productsSlice.reducer;

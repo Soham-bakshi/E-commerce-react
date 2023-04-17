@@ -1,12 +1,13 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import CartButtons from './CartButtons';
 import { FaBars } from 'react-icons/fa';
-import { links } from '../utils/constants';
-import { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
+import { links } from '../utils/constants';
 
 function Navbar() {
+  // component level state for toggling menu for small screens
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -64,6 +65,7 @@ function Navbar() {
   );
 }
 
+// styled components
 const NavContainer = styled.nav`
   height: 5rem;
   display: flex;
@@ -135,7 +137,6 @@ const NavContainer = styled.nav`
     }
   }
 `;
-
 const SidebarContainer = styled.div`
   text-align: center;
   background: var(--clr-white);
@@ -180,14 +181,12 @@ const SidebarContainer = styled.div`
     transition: var(--transition);
     letter-spacing: var(--spacing);
   }
-
   .links a:hover {
     padding: 1rem 1.5rem;
     padding-left: 2rem;
     background: var(--clr-grey-10);
     color: var(--clr-grey-2);
   }
-
   .sidebar {
     position: fixed;
     top: 0;

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
+
 const Stars = ({ stars }) => {
+  // functionality to populate the star based on the rating value
   const tempStars = Array.from({ length: 5 }, (_, index) => {
     const number = index + 0.5;
     return (
@@ -15,6 +17,7 @@ const Stars = ({ stars }) => {
       </span>
     );
   });
+
   return (
     <Wrapper>
       <div className="stars">{tempStars}</div>
@@ -22,6 +25,7 @@ const Stars = ({ stars }) => {
   );
 };
 
+// styled component
 const Wrapper = styled.div`
   display: flex;
   align-items: center;

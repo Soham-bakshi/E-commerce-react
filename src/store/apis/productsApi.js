@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+// creating RTK query API service
 export const productsApi = createApi({
   reducerPath: 'productsApi',
   baseQuery: fetchBaseQuery({
@@ -56,6 +57,7 @@ export const productsApi = createApi({
   },
 });
 
+// exporting the automatically generated hooks created by RTK query
 export const {
   useFetchProductsQuery,
   useAddProductMutation,

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const Footer = () => {
   return (
     <Wrapper>
@@ -12,6 +13,7 @@ const Footer = () => {
   );
 };
 
+// styled components
 const Wrapper = styled.footer`
   height: 5rem;
   display: flex;
@@ -26,7 +28,6 @@ const Wrapper = styled.footer`
   h5 {
     color: var(--clr-white);
     margin: 0.1rem;
-
     font-weight: 400;
     text-transform: none;
     line-height: 1.25;

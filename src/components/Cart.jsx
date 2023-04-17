@@ -1,19 +1,22 @@
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeFromCart, clearCart, increment, decrement } from '../store';
 import { Link } from 'react-router-dom';
 import { MdDeleteForever } from 'react-icons/md';
 import { FaPlus, FaMinus } from 'react-icons/fa';
-import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFromCart, clearCart, increment, decrement } from '../store';
 
 function Cart() {
   const dispatch = useDispatch();
+
+  // accessing state from redux store
   const cartState = useSelector((state) => {
     return state.cart_data;
   });
 
   const { cartItems, shippingFee, subtotal } = cartState;
 
+  // functionality if cart is empty
   if (cartItems.length < 1) {
     return (
       <Wrapper className="page-100">
@@ -45,14 +48,12 @@ function Cart() {
           <WrapperItem key={item.id}>
             <div className="title">
               <img src={item.thumbnail} alt={item.title} />
-
               <div>
                 <h5 className="name">{item.title}</h5>
                 <h5 className="price-small">{item.price}</h5>
               </div>
             </div>
             <h5 className="price">{item.price}</h5>
-
             <WrapperButton className="amount-btns">
               <button
                 type="button"
@@ -87,9 +88,7 @@ function Cart() {
             </button>
           </WrapperItem>
         ))}
-
         <hr />
-
         <div className="link-container">
           <Link to="/" className="link-btn">
             Continue Shopping
@@ -109,7 +108,6 @@ function Cart() {
             Clear Shopping Cart
           </button>
         </div>
-
         <WrapperTotals>
           <div>
             <article className="cart-order-content">
@@ -131,6 +129,7 @@ function Cart() {
   );
 }
 
+//  styled components
 const Wrapper = styled.div`
   .empty {
     text-align: center;
@@ -146,7 +145,6 @@ const Wrapper = styled.div`
     }
   }
 `;
-
 const WrapperContent = styled.section`
   display: block;
   width: min-content;
@@ -180,7 +178,6 @@ const WrapperContent = styled.section`
     }
   }
 `;
-
 const WrapperCol = styled.div`
   display: none;
   @media (min-width: 776px) {
@@ -195,7 +192,6 @@ const WrapperCol = styled.div`
         font-weight: 400;
       }
     }
-
     span {
       width: 1rem;
       height: 1rem;
@@ -206,7 +202,6 @@ const WrapperCol = styled.div`
     }
   }
 `;
-
 const WrapperItem = styled.article`
   .subtotal {
     display: none;
@@ -326,7 +321,6 @@ const WrapperItem = styled.article`
     }
   }
 `;
-
 const WrapperButton = styled.div`
   display: grid;
   width: 140px;
@@ -354,7 +348,6 @@ const WrapperButton = styled.div`
     margin-bottom: 0;
   }
 `;
-
 const WrapperTotals = styled.section`
   margin-top: 1rem;
   display: flex;
@@ -373,9 +366,6 @@ const WrapperTotals = styled.section`
   }
   p {
     text-transform: capitalize;
-  }
-  h4 {
-    /* margin-top: 2rem; */
   }
   @media (min-width: 776px) {
     justify-content: flex-end;
