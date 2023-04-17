@@ -17,7 +17,7 @@
 ### 6. React Toastify
 
 
-## Deployed Server : https://ecommerce-react-data.onrender.com
+## Deployed API Service : https://ecommerce-react-data.onrender.com
 
 # <div align="center">
 
