@@ -75,11 +75,11 @@
     - 📄 [main.jsx](src/main.jsx)
     - 📂 **store**
       - 📂 **apis**
-        - 📄 [productsApi.js](src/store/apis/productsApi.js)
-      - 📄 [index.js](src/store/index.js)
+        - 📄 [productsApi.js](src/store/apis/productsApi.js)  
       - 📂 **slice**
         - 📄 [cartSlice.js](src/store/slice/cartSlice.js)
         - 📄 [productSlice.js](src/store/slice/productSlice.js)
+      - 📄 [index.js](src/store/index.js)
     - 📂 **utils**
       - 📄 [constants.js](src/utils/constants.js)
   - 📄 [App.jsx](src/App.jsx)
