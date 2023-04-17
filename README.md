@@ -37,7 +37,7 @@
 
 </div>
 
-## Home page feature:
+## Home page features:
 
 1. Navbar with cart items count and relevant navigation links
 2. List of products from own API
@@ -56,7 +56,7 @@
 
 </div>
 
-## Add product page feature:
+## Add product page features:
 
 1. Form to add a product in the DB
 2. Relevant navigations and notifications
@@ -69,7 +69,7 @@
 
 </div>
 
-## Cart page feature:
+## Cart page features:
 
 1. Shows all the items in the cart
 2. Increase and decrease items, delete item and clear cart buttons
@@ -77,7 +77,13 @@
 
 <hr/>
 
-## General feature:
+# <div align="center">
+
+![app1](https://github.com/P666R/E-commerce-React/blob/main/public/4.png)
+
+</div>
+
+## General features:
 
 1. Handled errors and success alerts etc
 2. Handled errors etc from API with appropriate alerts/notifications
