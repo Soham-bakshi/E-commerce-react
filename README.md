@@ -38,14 +38,14 @@
 
 # <div align="center">
 
-<!-- ![app1](https://github.com/P666R/E-commerce-React/blob/main/public/2.png) -->
+![app1](https://github.com/P666R/E-commerce-React/blob/main/public/2.png)
 </div>
 
 <hr/>
 
 # <div align="center">
 
-<!-- ![app1](https://github.com/P666R/E-commerce-React/blob/main/public/3.png) -->
+![app1](https://github.com/P666R/E-commerce-React/blob/main/public/3.png)
 </div>
 
 <hr/>
