@@ -99,7 +99,7 @@
 
 ## Go to directory
 
-- cd E-commerce-React-main
+- cd e-commerce-react-main
 
 ## Install all dependencies
 
