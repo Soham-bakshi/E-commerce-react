@@ -112,8 +112,6 @@
       - 📄 [ProductsList.jsx](src/components/ProductsList.jsx)
       - 📄 [Sort.jsx](src/components/Sort.jsx)
       - 📄 [Stars.jsx](src/components/Stars.jsx)
-    - 📄 [index.css](src/index.css)
-    - 📄 [main.jsx](src/main.jsx)
     - 📂 **store**
       - 📂 **apis**
         - 📄 [productsApi.js](src/store/apis/productsApi.js)
@@ -123,7 +121,9 @@
       - 📄 [index.js](src/store/index.js)
     - 📂 **utils**
       - 📄 [constants.js](src/utils/constants.js)
-  - 📄 [App.jsx](src/App.jsx)
+    - 📄 [App.jsx](src/App.jsx)
+    - 📄 [index.css](src/index.css)
+    - 📄 [main.jsx](src/main.jsx)
   - 📄 [index.html](index.html)
   - 📄 [package\-lock.json](package-lock.json)
   - 📄 [package.json](package.json)
