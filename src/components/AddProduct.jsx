@@ -28,10 +28,10 @@ function AddProduct() {
       setData({ ...data, title: e.target.value });
     }
     if (e.target.name === 'price') {
-      setData({ ...data, price: e.target.value });
+      setData({ ...data, price: Number(e.target.value) });
     }
     if (e.target.name === 'rating') {
-      setData({ ...data, rating: e.target.value });
+      setData({ ...data, rating: Number(e.target.value) });
     }
     if (e.target.name === 'description') {
       setData({ ...data, description: e.target.value });
