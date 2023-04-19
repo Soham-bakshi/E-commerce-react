@@ -180,7 +180,7 @@ function ProductItem({ item }) {
                   type="number"
                   name="price"
                   id="price"
-                  value={data.price}
+                  value={data.price || ''}
                   onChange={handleChange}
                 ></input>
               </div>
@@ -192,7 +192,7 @@ function ProductItem({ item }) {
                   type="number"
                   name="rating"
                   id="rating"
-                  value={data.rating}
+                  value={data.rating || ''}
                   onChange={handleChange}
                 ></input>
               </div>
