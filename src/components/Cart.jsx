@@ -50,10 +50,10 @@ function Cart() {
               <img src={item.thumbnail} alt={item.title} />
               <div>
                 <h5 className="name">{item.title}</h5>
-                <h5 className="price-small">{item.price}</h5>
+                <h5 className="price-small">&#8377;{item.price}</h5>
               </div>
             </div>
-            <h5 className="price">{item.price}</h5>
+            <h5 className="price">&#8377;{item.price}</h5>
             <WrapperButton className="amount-btns">
               <button
                 type="button"
