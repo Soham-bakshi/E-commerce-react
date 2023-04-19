@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
 
 const Stars = ({ stars }) => {
-  // functionality to populate the star based on the rating value
+  // functionality to generate the no of stars based on the rating value
   const tempStars = Array.from({ length: 5 }, (_, index) => {
     const number = index + 0.5;
     return (
