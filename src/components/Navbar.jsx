@@ -20,7 +20,7 @@ function Navbar() {
         <div className="nav-center">
           <div className="nav-header">
             <Link to="/">
-              <span>E-COMMERCE(P666R)</span>
+              <span>E-COMMERCE (SB)</span>
             </Link>
             <button type="button" className="nav-toggle" onClick={handleClick}>
               <FaBars />
@@ -42,7 +42,7 @@ function Navbar() {
       <SidebarContainer>
         <aside className={`${isOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
           <div className="sidebar-header">
-            <span>E-COMMERCE(P666R)</span>
+            <span>E-COMMERCE(SB)</span>
             <button type="button" className="close-btn" onClick={handleClick}>
               <FaTimes />
             </button>

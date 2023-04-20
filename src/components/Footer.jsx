@@ -6,9 +6,14 @@ const Footer = () => {
     <Wrapper>
       <h5>
         &copy; {new Date().getFullYear()}
-        <span> E-COMMERCE(P666R)</span>
+        <span> E-COMMERCE(SB)</span>
       </h5>
-      <h5>All Rights Reserved</h5>
+      <h5>All Rights Reserved </h5>
+      <p></p>
+      <p></p>
+      <h5>Created with ❤️ by Soham Bakshi</h5>
+      <p></p>
+      <p></p>
     </Wrapper>
   );
 };
@@ -33,7 +38,7 @@ const Wrapper = styled.footer`
     line-height: 1.25;
   }
   @media (min-width: 776px) {
-    flex-direction: row;
+    flex-direction: column;
   }
 `;
 
