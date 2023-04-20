@@ -31,7 +31,7 @@
 
 # <div align="center">
 
-![app](https://github.com/P666R/E-commerce-React/blob/main/public/1.png)
+![app](https://github.com/Soham-bakshi/E-commerce-react/blob/main/public/1.jpeg)
 
 </div>
 
@@ -50,7 +50,7 @@
 
 # <div align="center">
 
-![app1](https://github.com/P666R/E-commerce-React/blob/main/public/2.png)
+![app1](https://github.com/Soham-bakshi/E-commerce-react/blob/main/public/2.jpeg)
 
 </div>
 
@@ -63,7 +63,7 @@
 
 # <div align="center">
 
-![app1](https://github.com/P666R/E-commerce-React/blob/main/public/3.png)
+![app1](https://github.com/Soham-bakshi/E-commerce-react/blob/main/public/3.jpeg)
 
 </div>
 
@@ -77,7 +77,7 @@
 
 # <div align="center">
 
-![app1](https://github.com/P666R/E-commerce-React/blob/main/public/4.png)
+![app1](https://github.com/Soham-bakshi/E-commerce-react/blob/main/public/4.jpeg)
 
 </div>
 
@@ -134,7 +134,7 @@
 
 ## To run this project run
 
-- git clone https://github.com/P666R/E-commerce-React.git
+- git clone https://github.com/Soham-bakshi/E-commerce-react.git
 
 ## Go to directory
 
